@@ -6,7 +6,7 @@ public class testClass {
 
 	public static void main(String[] args) {
 		PrintStream out = System.out;
-		out.println("Hello world");
+		out.println("Hello world again");
 	}
 
 }
