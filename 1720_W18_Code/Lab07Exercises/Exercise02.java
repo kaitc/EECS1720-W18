@@ -28,7 +28,20 @@ public class Exercise02 {
 	}
 
 	public static void getImageFiles() {
+		String subDirPath = "imageFiles";
+		File myFile;
+		myFile = new File(subDirPath);
+		boolean doesExist = myFile.exists();
+		// output.println(doesExist);
+		boolean isDirectory = myFile.isDirectory();
+		// output.println(isDirectory);
 
+		if (doesExist && isDirectory) {
+			File[] theFiles = myFile.listFiles();
+			for (File file : theFiles) {
+				output.println(file.getPath() + "\t" + file.length());
+			}
+		}
 	}
 
 }

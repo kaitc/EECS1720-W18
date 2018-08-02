@@ -1,4 +1,5 @@
 package Lab07Exercises;
+
 import java.io.File;
 
 import javafx.application.Application;
@@ -41,22 +42,28 @@ public class Exercise05 extends Application {
 		 * Task 01: Cut and paste the helper method from Exercise04 here. Invoke
 		 * the method to obtain an array of File objects.
 		 */
+		String subDirPath = "imageFiles";
+		File[] theFiles = getImageFiles(subDirPath);
 
 		/*
 		 * Task 02: Construct an javafx.scene.image.Image object using the
 		 * constructor that accepts a String URL. For the URL, supply the string
 		 * pathname of the first File element of the array.
 		 */
+		String pathname = theFiles[0].getPath();
+		Image myImage = new Image(pathname);
 
 		/*
 		 * Task 02: Construct an javafx.scene.image.ImageView using the
 		 * constructor that accepts an Image object. Supply the Image object you
 		 * just instantiated.
 		 */
+		ImageView myImageView = new ImageView(myImage);
 
 		/*
 		 * Task 03: Add the ImageView object to the root's children.
 		 */
+		root.getChildren().add(myImageView);
 
 		/*
 		 * Task 04: You will see that the Image does not scale properly to the
@@ -65,16 +72,31 @@ public class Exercise05 extends Application {
 		 * Stage object to resize this app's window to match the width and
 		 * height of the image exactly.
 		 */
+		Bounds b = myImageView.getLayoutBounds();
+		double dogeWidth = b.getWidth();
+		double dogeHeight = b.getHeight();
+		System.out.println(dogeWidth);
+		System.out.println(dogeHeight);
+		primaryStage.setWidth(dogeWidth);
+		primaryStage.setHeight(dogeHeight);
 
 	}
 
 	public static File[] getImageFiles(String thePath) {
 		File[] theFiles = null;
 
-		// put your code in here
-		
-		return theFiles;
+		File myFile;
+		myFile = new File(thePath);
+		boolean doesExist = myFile.exists();
+		// output.println(doesExist);
+		boolean isDirectory = myFile.isDirectory();
+		// output.println(isDirectory);
 
+		if (doesExist && isDirectory) {
+			theFiles = myFile.listFiles();
+		}
+
+		return theFiles;
 	}
 
 }

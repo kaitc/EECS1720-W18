@@ -35,12 +35,9 @@ public class CM16_App02 extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
-		
-		
 		Text scenetitle = new Text("Welcome");
 		scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		grid.add(scenetitle, 0, 0, 2, 1);
-
 
 		Label familyName = new Label("Family Name(s):");
 		grid.add(familyName, 0, 2);
@@ -53,8 +50,6 @@ public class CM16_App02 extends Application {
 
 		TextField firstNameField = new TextField();
 		grid.add(firstNameField, 1, 1);
-
-
 
 	}
 

@@ -21,13 +21,25 @@ public class Exercise03 {
 		 * Invoke the method.
 		 */
 
-		String subDirPath = "";
+		String subDirPath = "imageFiles";
 		getImageFiles(subDirPath);
 
 	}
 
 	public static void getImageFiles(String thePath) {
+		File myFile;
+		myFile = new File(thePath);
+		boolean doesExist = myFile.exists();
+		// output.println(doesExist);
+		boolean isDirectory = myFile.isDirectory();
+		// output.println(isDirectory);
 
+		if (doesExist && isDirectory) {
+			File[] theFiles = myFile.listFiles();
+			for (File file : theFiles) {
+				output.println(file.getPath() + "\t" + file.length());
+			}
+		}
 	}
 
 }

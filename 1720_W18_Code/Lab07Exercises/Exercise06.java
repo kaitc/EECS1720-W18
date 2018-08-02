@@ -1,4 +1,5 @@
 package Lab07Exercises;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,35 +43,53 @@ public class Exercise06 extends Application {
 		 * Task 01: Cut and paste the helper method from Exercise04 here. Invoke
 		 * the method to obtain an array of File objects.
 		 */
+		String subDirPath = "imageFiles";
+		File[] theFiles = getImageFiles(subDirPath);
+		String pathname = theFiles[0].getPath();
 
 		/*
 		 * Task 02: Construct an javafx.scene.image.ImageView for each file in
 		 * the image directory. Use a List to contain all of the images.
 		 */
+		List<ImageView> myList = new ArrayList<ImageView>();
+		for (File f : theFiles) {
+			Image img = new Image(f.getPath());
+			ImageView myImage = new ImageView(img);
+			myList.add(myImage);
+		}
 
 		/*
 		 * Task 03: Add the List of ImageView objects to the root's children.
 		 * Use the method addAll(Collection<E>)
 		 */
-		
+		root.getChildren().addAll(myList);
 
 		/*
 		 * Task 04: Determine the number of images. Resize the width of each
 		 * image to get an equal portion of the screen width. Use
-		 * setPreserveRatio() to ensure the width_height ratio is reserved.The
+		 * setPreserveRatio() to ensure the width_height ratio is preserved.The
 		 * heights will vary. Position the images so that they appear in a
 		 * single row.
 		 */
+		int numFile = theFiles.length;
+		double horizAllocation = SCENE_WIDTH / numFile;
 
 	}
 
 	public static File[] getImageFiles(String thePath) {
 		File[] theFiles = null;
-		
-		// put your code in here
+
+		File myFile;
+		myFile = new File(thePath);
+		boolean doesExist = myFile.exists();
+		// output.println(doesExist);
+		boolean isDirectory = myFile.isDirectory();
+		// output.println(isDirectory);
+
+		if (doesExist && isDirectory) {
+			theFiles = myFile.listFiles();
+		}
 
 		return theFiles;
-
 	}
-
 }

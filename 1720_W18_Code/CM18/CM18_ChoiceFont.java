@@ -15,6 +15,7 @@ import javafx.scene.control.Separator;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class CM18_ChoiceFont extends Application {
@@ -41,7 +42,6 @@ public class CM18_ChoiceFont extends Application {
 		ChoiceBox<String> cb = new ChoiceBox<String>(choiceList);
 
 		gridPane.add(cb, 0, 0);
-
 	}
 
 }

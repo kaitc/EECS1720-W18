@@ -1,4 +1,5 @@
 package Lab07Exercises;
+
 import java.io.File;
 import java.io.PrintStream;
 
@@ -21,7 +22,7 @@ public class Exercise04 {
 		 * over them and for each one, print the name and size of each file.
 		 */
 
-		String subDirPath = "";
+		String subDirPath = "imageFiles";
 		File[] theFiles = getImageFiles(subDirPath);
 		for (File f : theFiles) {
 			output.println(f.getPath() + "\tsize: " + f.length());
@@ -32,10 +33,18 @@ public class Exercise04 {
 	public static File[] getImageFiles(String thePath) {
 		File[] theFiles = null;
 
-		// put your code in here
-		
-		return theFiles;
+		File myFile;
+		myFile = new File(thePath);
+		boolean doesExist = myFile.exists();
+		// output.println(doesExist);
+		boolean isDirectory = myFile.isDirectory();
+		// output.println(isDirectory);
 
+		if (doesExist && isDirectory) {
+			theFiles = myFile.listFiles();
+		}
+
+		return theFiles;
 	}
 
 }
